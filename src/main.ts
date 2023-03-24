@@ -12,7 +12,8 @@ import {
   OiGrabber, 
   OiPencil, 
   OiPersonFill, 
-  OiAlert
+  OiAlert,
+  OiCode
 } from 'oh-vue-icons/icons/oi'
 
 addIcons(
@@ -24,7 +25,8 @@ addIcons(
   OiGrabber, 
   OiPencil, 
   OiPersonFill,
-  OiAlert
+  OiAlert,
+  OiCode
 );
 
 const pinia = createPinia()

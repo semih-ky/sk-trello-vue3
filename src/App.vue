@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import Trello from "./components/templates/Trello/Trello.vue";
+import Home from "./components/pages/Home/Home.vue";
 
 </script>
 
 <template>
-  <Trello />
+  <Home />
 </template>
