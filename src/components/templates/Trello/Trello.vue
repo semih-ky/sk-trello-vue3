@@ -15,7 +15,7 @@ const store = useStore()
     <div v-if="store.isSearch">
       <SearchResult />
     </div>
-    <div v-else>
+    <div v-else class="flex-1">
       <Board />
     </div>
     <Code />
