@@ -4,14 +4,13 @@ import Text from '@/components/atoms/Text/Text.vue';
 import CardEdit from '@/components/organisms/CardEdit/CardEdit.vue';
 import type { ID, Task } from '@/types';
 
-defineProps<{
-  task: Task,
-  draggable: boolean
-}>();
 
-const emit = defineEmits<{
-  (e: 'delete', payload: ID): void
-}>()
+withDefaults(defineProps<{
+  task: Task,
+  draggable?: boolean
+}>(), {
+  draggable: true
+});
 
 const open = ref(false);
 
@@ -34,7 +33,7 @@ const open = ref(false);
       </div>
     </div>
     <Teleport to="#modal">
-      <CardEdit :open="open" @close="open = false" :task="task" @delete="$emit('delete', $event)"  />
+      <CardEdit :open="open" @close="open = false" :task="task"  />
     </Teleport>
   </div>
 </template>

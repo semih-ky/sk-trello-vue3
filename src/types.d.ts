@@ -7,7 +7,10 @@ export interface List {
 }
 
 export interface Task {
+  listId: ID,
   id: ID,
   text: string,
   done: boolean
 }
+
+export type TaskRaw = Omit<Task, "listId">

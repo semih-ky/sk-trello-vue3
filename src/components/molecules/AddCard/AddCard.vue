@@ -2,11 +2,11 @@
 import { ref, watch, nextTick } from 'vue';
 import { v4 as uuidv4 } from 'uuid';
 import Button from '@/components/atoms/Button/Button.vue';
-import type { Task } from '@/types';
+import type { TaskRaw } from '@/types';
 import { onClickOutside, useTextareaAutosize } from '@vueuse/core'
 
 const emit = defineEmits<{
-  (e: "add", payload: Task ): void
+  (e: "add", payload: TaskRaw ): void
 }>();
 
 const addCardContainer = ref<HTMLElement | null>(null);

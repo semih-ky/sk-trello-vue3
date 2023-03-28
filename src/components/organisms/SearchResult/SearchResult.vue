@@ -6,8 +6,8 @@ import type { ID } from '@/types';
 const store = useStore();
 
 const deleteHandler = (id: ID) => {
-  const index = store.searchResult.findIndex(task => task.id === id);
-  store.searchResult.splice(index, 1)
+  // const index = store.searchResult.findIndex(task => task.id === id);
+  // store.searchResult.splice(index, 1)
 }
 
 </script>

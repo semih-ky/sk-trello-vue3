@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, watch, nextTick } from 'vue';
 import { v4 as uuidv4 } from 'uuid';
 import Modal from '@/components/atoms/Modal/Modal.vue';
 import Button from '@/components/atoms/Button/Button.vue';
 import { useStore } from '@/store/store';
 
-defineProps<{
+const props = defineProps<{
   open: boolean,
 }>()
 
@@ -16,6 +16,7 @@ const emit = defineEmits<{
 const store = useStore()
 
 const title = ref("")
+const titelInput = ref<HTMLInputElement | null>(null);
 
 const addListHandler = () => {
   if (!title.value.length) return
@@ -27,6 +28,17 @@ const addListHandler = () => {
   title.value = "";
   emit('close');
 }
+
+watch(() => props.open, 
+  () => {
+    if (props.open) {
+      nextTick(() => {
+        titelInput.value?.focus()
+      })
+    }
+  }
+)
+
 
 </script>
 
@@ -41,7 +53,15 @@ const addListHandler = () => {
     </template>
     
     <template #main >
-      <input v-model="title" type="text" placeholder="List title" class="w-full p-2 rounded bg-slate-700 focus:outline-none placeholder:italic placeholder:font-light placeholder:text-sm placeholder:text-slate-500" />
+      <input 
+        ref="titelInput" 
+        v-model="title" 
+        type="text" 
+        placeholder="List title"
+        @keydown.enter="addListHandler"
+        @keydown.esc="$emit('close')" 
+        class="w-full p-2 rounded bg-slate-700 focus:outline-none placeholder:italic placeholder:font-light placeholder:text-sm placeholder:text-slate-500" 
+      />
     </template>
     
     <template #footer >
